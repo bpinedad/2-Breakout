@@ -119,6 +119,32 @@ function LevelMaker.createMap(level)
         end
     end 
 
+    -- Once we have all our bricks created, randomly set locked blocks
+    local needKey = 0
+    local unlockedBricks = {}
+    for k, b in pairs(bricks) do
+        keyProbability = math.random(1, 20)
+        -- Verify we dont add more than half of the bricks
+        if keyProbability == 5 and needKey < #bricks / 2 then
+            -- Lock brick
+            b.needsKey = true
+            needKey = needKey + 1
+        else
+            table.insert(unlockedBricks, k)
+        end
+    end
+
+    -- Now, knowing the total amount of locked bricks, randomly add the corresponding keys
+    while needKey > 0 do 
+        local index = unlockedBricks[math.random(#unlockedBricks)]
+
+        -- If condition met
+        needKey = needKey - 1
+        bricks[index].isPowerUp = true
+        bricks[index].powerUp.skin = 2
+        table.remove(unlockedBricks, index)
+    end
+
     -- in the event we didn't generate any bricks, try again
     if #bricks == 0 then
         return self.createMap(level)

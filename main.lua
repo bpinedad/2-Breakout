@@ -66,7 +66,9 @@ function love.load()
         ['paddles'] = GenerateQuadsPaddles(gTextures['main']),
         ['balls'] = GenerateQuadsBalls(gTextures['main']),
         ['bricks'] = GenerateQuadsBricks(gTextures['main']),
-        ['hearts'] = GenerateQuads(gTextures['hearts'], 10, 9)
+        ['hearts'] = GenerateQuads(gTextures['hearts'], 10, 9),
+        ['powerUps'] = GenerateQuadsPowerUps(gTextures['main']),
+        ['keyBrick'] = GenerateQuadsKey(gTextures['main'])
     }
     
     -- initialize our virtual resolution, which will be rendered within our
@@ -91,6 +93,14 @@ function love.load()
         ['hurt'] = love.audio.newSource('sounds/hurt.wav', 'static'),
         ['victory'] = love.audio.newSource('sounds/victory.wav', 'static'),
         ['recover'] = love.audio.newSource('sounds/recover.wav', 'static'),
+
+        ['paddleIncrease'] = love.audio.newSource('sounds/increase.wav', 'static'),
+        ['powerupNew'] = love.audio.newSource('sounds/powerupNew.wav', 'static'),
+        ['keyPickedUp'] = love.audio.newSource('sounds/keyPickedUp.wav', 'static'),
+        ['powerupPickedUp'] = love.audio.newSource('sounds/powerupPickedUp.wav', 'static'),
+        ['unlocked'] = love.audio.newSource('sounds/unlocked.wav', 'static'),
+        ['lockedHit'] = love.audio.newSource('sounds/lockedHit.wav', 'static'),
+
         ['high-score'] = love.audio.newSource('sounds/high_score.wav', 'static'),
         ['pause'] = love.audio.newSource('sounds/pause.wav', 'static'),
 

@@ -125,3 +125,42 @@ function GenerateQuadsBalls(atlas)
 
     return quads
 end
+
+-- Function to get desired powerups. Only multiball and key in this case
+function GenerateQuadsPowerUps(atlas)
+    -- Two fixed locations within sprite sheet
+    -- Could load all power ups at the bottom but will hardcode only multiball and key for now
+    -- since other powerups wont be used
+
+    local counter = 1
+    local quads = {}
+
+    --Load multiball powerup
+    local x = 48
+    local y = 192
+
+    quads[counter] = love.graphics.newQuad(x, y, 16, 16, atlas:getDimensions())
+
+    counter = counter + 1
+
+    -- Load key powerup
+    x = 144
+
+    quads[counter] = love.graphics.newQuad(x, y, 16, 16, atlas:getDimensions())
+
+    return quads
+end
+
+-- Funciton to generate key quad
+function GenerateQuadsKey(atlas)
+    -- Fixed location within sprite sheet
+    local x = 160
+    local y = 48
+
+    local counter = 1
+    local quads = {}
+
+    quads[counter] = love.graphics.newQuad(x, y, 32, 16, atlas:getDimensions())
+
+    return quads
+end
